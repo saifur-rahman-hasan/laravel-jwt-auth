@@ -49,6 +49,16 @@ class AuthController extends Controller
     }
 
     /**
+     * Get the authenticated User
+     *
+     * @return JsonResponse
+     */
+    public function user(): JsonResponse
+    {
+        return response()->json(new AuthUserResource($this->guard()->user()));
+    }
+
+    /**
      * Log the user out (Invalidate the token)
      *
      * @return JsonResponse
