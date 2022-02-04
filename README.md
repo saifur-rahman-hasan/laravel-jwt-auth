@@ -13,5 +13,20 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 - ``php artisan key:generate``
 - ``php artisan jwt:secret``
 - ``yarn install`` or ``npm install``
-- ``yarn dev`` or ``npm run dev``
-- ``php artisan migrate``
+- `yarn dev` or ``npm run dev``
+- `php artisan migrate`
+
+### Telescope Configuration
+If you want to use Telescope You have to follow the following instructions
+
+- ``php artisan telescope:install``
+- ``php artisan migrate --path=database/migrations/telescope``
+
+Add these configurations to your .env file. You can allow multiple users to allow using telescope but for this you have to mention their account email address. 
+```dotenv
+TELESCOPE_ENABLED=true
+TELESCOPE_AUTHORIZED_USERS="my-email@mail.com,other-email@mail.com"
+```
+
+We have added ``$schedule->command('telescope:prune --hours=48')->daily();`` to ``app/Console/Kernel.php`` file. This will remove telescope data from database every 48 hours later. You can change the time as your need. But make sure your schedule is working properly.
+See the official [laravel docs](https://laravel.com/docs/8.x/scheduling#running-the-scheduler) to configure according to your need.
