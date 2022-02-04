@@ -41,16 +41,6 @@ class AuthController extends Controller
     /**
      * Get the authenticated User
      *
-     * @return AuthUserResource
-     */
-    public function me(): AuthUserResource
-    {
-        return new AuthUserResource($this->guard()->user());
-    }
-
-    /**
-     * Get the authenticated User
-     *
      * @return JsonResponse
      */
     public function user(): JsonResponse
